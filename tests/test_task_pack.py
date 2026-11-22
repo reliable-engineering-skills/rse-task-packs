@@ -136,6 +136,17 @@ class TaskPackTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     self.check()
 
+    def test_directory_allowed_paths_may_end_with_one_slash(self):
+        self.data['tasks'][0]['allowed_paths'] = ['tests/', 'src/admin/', 'auth.py']
+        self.assertTrue(self.check()['valid'])
+
+    def test_unsafe_directory_paths_stay_rejected(self):
+        for path in ('/', '//', '../', 'src//', 'src//x', './', '/abs/', 'C:/x/'):
+            with self.subTest(path=path):
+                self.data['tasks'][0]['allowed_paths'] = [path]
+                with self.assertRaises(ValueError):
+                    self.check()
+
     def test_duplicate_ids_are_rejected(self):
         self.second_task()['id'] = 'T001'
         with self.assertRaisesRegex(ValueError, 'Duplicate task ID'):

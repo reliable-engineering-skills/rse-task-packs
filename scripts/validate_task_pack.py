@@ -65,9 +65,11 @@ def shape(value, required, optional=()):
 def portable_path(value):
     require(text(value) and '\\' not in value and ':' not in value,
             'Use nonempty portable relative paths')
-    p = PurePosixPath(value)
-    require(not p.is_absolute() and not PureWindowsPath(value).drive and
-            not any(part in ('', '.', '..') for part in value.split('/')),
+    # One trailing slash marks a directory (allowed_paths such as "tests/"); "", "/", "//" stay invalid.
+    body = value[:-1] if value.endswith('/') else value
+    p = PurePosixPath(body)
+    require(body and not p.is_absolute() and not PureWindowsPath(body).drive and
+            not any(part in ('', '.', '..') for part in body.split('/')),
             'Unsafe relative path: ' + value)
     reserved = {'con', 'prn', 'aux', 'nul'} | {f'{v}{n}' for v in ('com', 'lpt') for n in range(1, 10)}
     require(not any(part.rstrip(' .') != part or part.split('.')[0].lower() in reserved for part in p.parts),
