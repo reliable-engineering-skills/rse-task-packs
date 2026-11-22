@@ -15,6 +15,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python: ["3.9", "3.x"]
+        # Python 3.9 (EOL Oct 2025) is no longer on the Ubuntu runner image; it stays covered on Windows and macOS.
+        exclude:
+          - os: ubuntu-latest
+            python: "3.9"
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     env:
