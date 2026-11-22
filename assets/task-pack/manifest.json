@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "feature_id": "REPLACE_WITH_FEATURE_ID",
+  "spec_file": "SPEC.md",
+  "spec_revision": "DRAFT",
+  "approval": {
+    "status": "pending",
+    "evidence": ""
+  },
+  "requirements": [
+    {
+      "id": "FR-001",
+      "source": "SPEC.md#fr-001",
+      "status": "proposed"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T001",
+      "file": "tasks/T001.md",
+      "requirements": [
+        "FR-001"
+      ],
+      "depends_on": [],
+      "allowed_paths": [
+        "REPLACE_WITH_PROJECT_RELATIVE_PATH"
+      ],
+      "acceptance": [
+        "REPLACE_WITH_OBSERVABLE_ACCEPTANCE"
+      ],
+      "checks": [
+        {
+          "id": "CHK-001",
+          "instruction": "REPLACE_WITH_REAL_COMMAND_OR_PRECISE_MANUAL_CHECK"
+        }
+      ],
+      "status": "draft"
+    }
+  ]
+}

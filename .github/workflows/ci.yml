@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.9", "3.x"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      RSE_SKILLS_DIR: ${{ github.workspace }}/skills
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: skills/rse-task-packs
+      - uses: actions/checkout@v4
+        with:
+          repository: reliable-engineering-skills/reliable-software-engineering
+          path: skills/reliable-software-engineering
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Lint skills (frontmatter, links, anchors, residue)
+        run: python -B skills/reliable-software-engineering/suite/tools/check_skills.py
+      - name: Task-pack validator tests
+        run: python -B -m unittest discover -s skills/rse-task-packs/tests -v

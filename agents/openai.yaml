@@ -1,0 +1,4 @@
+interface:
+  display_name: "RSE Task Packs"
+  short_description: "Portable, resumable task packs with a structural validator"
+  default_prompt: "Use $rse-task-packs to break accepted work into bounded, resumable task files."
