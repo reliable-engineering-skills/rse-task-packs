@@ -1,8 +1,8 @@
 ---
 name: rse-task-packs
-description: "Turn an accepted feature or change into portable, bounded task files (spec, contracts, decisions, manifest, per-task instructions, evidence) that another agent or a later session can execute and resume without chat history. Use when the user asks to break work into tasks, plan multi-session or multi-agent execution, prepare a handoff, or resume a task pack; includes a structural validator. Not for small direct edits. Builds on the reliable-software-engineering skill."
+description: "Turn an accepted feature or change into portable, bounded task files (spec, contracts, decisions, manifest, per-task instructions, evidence) that another agent or a later session can execute and resume without chat history. Use when the user asks to break work into tasks, write or draft a spec for a feature, plan multi-session or multi-agent execution, prepare a handoff, or resume a task pack; includes a structural validator. Not for small direct edits. Builds on the reliable-software-engineering skill."
 metadata:
-  version: "3.0.0"
+  version: "3.1.1"
 ---
 
 # Portable, bounded implementation task packs
@@ -16,6 +16,10 @@ Use for requested task decomposition, substantial multi-session work, or prepari
 Inspect the actual repository, relevant project instructions, accepted user request, versions, interfaces, checks, and current revision. A planning request produces draft tasks, not code execution. Record the source of approval: an actual user instruction can already authorize the listed scope. Do not demand another approval for what the user has clearly authorized. A draft product choice or model-generated assumption is not user approval.
 
 Assign stable requirement IDs and observable acceptance. Mark uncertainties explicitly. Ask the user before adding or changing product behavior, public contracts, authorization policies, data retention, paid/external effects, infrastructure, or dependencies beyond accepted scope. Show the concrete decision, effect, alternatives, and recommended choice. Record their answer; do not invent an answer or promote your recommendation to approval. Continue independent approved tasks when possible. Routine internal names, local structure, and necessary checks within accepted scope can be chosen without repeated questions.
+
+## Establish a spec when none exists
+
+When the user asks for a pack or a plan but no accepted specification exists, draft one from available evidence (the request, code, documentation, issues) before writing tasks. Mark each statement as stated by the user, derived from evidence, or assumed. Gather only the consequential open questions (product behavior, public contracts, permissions, data retention, paid or external effects) into one short batched question; routine reversible choices stay recorded assumptions. Record the user's actual answers in DECISIONS.md and keep dependent tasks draft until they are answered. Express a task that waits on an open decision with status `draft`, or `blocked` with a `blocker` naming the decision; never add fields to manifest.json, whose schema the validator enforces. Do not run an open-ended interview, and never answer a question on the user's behalf.
 
 ## Adapt Spec Kit selectively
 

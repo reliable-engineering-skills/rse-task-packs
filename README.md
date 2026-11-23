@@ -49,4 +49,4 @@ The validator checks structure, never approval authenticity or code correctness.
 
 ## License
 
-MIT. Version 3.0.0; see the [core changelog](https://github.com/reliable-engineering-skills/reliable-software-engineering/blob/main/CHANGELOG.md).
+MIT. Version 3.1.1; see the [core changelog](https://github.com/reliable-engineering-skills/reliable-software-engineering/blob/main/CHANGELOG.md).
