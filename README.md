@@ -1,5 +1,7 @@
 # rse-task-packs
 
+[![CI](https://github.com/reliable-engineering-skills/rse-task-packs/actions/workflows/ci.yml/badge.svg)](https://github.com/reliable-engineering-skills/rse-task-packs/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/reliable-engineering-skills/rse-task-packs)](https://github.com/reliable-engineering-skills/rse-task-packs/releases/latest) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Turns accepted work into portable, resumable task packs for another agent or a later session, with a structural validator.
 
 > Requires [reliable-software-engineering](https://github.com/reliable-engineering-skills/reliable-software-engineering) installed alongside. Links such as `../reliable-software-engineering/references/...` resolve on disk after installation, not on the GitHub web view.
@@ -33,6 +35,7 @@ for r in reliable-software-engineering rse-task-packs rse-refactoring rse-securi
 ```
 
 Codex: clone the same five repositories into `~/.codex/skills/`. Update later with `git pull` in each folder.
+To install a specific release instead of `main`, see [Pin a release](https://github.com/reliable-engineering-skills/reliable-software-engineering#pin-a-release).
 
 ## Contents
 
